@@ -42,7 +42,10 @@
 	</Target>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components" Version="5.0.0-rc.1.20451.17" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0-rc.1.20451.17" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0-rc.1.20451.14" />
+		<PackageReference Include="Microsoft.JSInterop.WebAssembly" Version="5.0.0-rc.1.20451.17" />
 	</ItemGroup>
 
 	<ItemGroup>
