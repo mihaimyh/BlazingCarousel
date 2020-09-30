@@ -1,12 +1,51 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<Authors>Mihai Dumitru</Authors>
+		<Company></Company>
+		<Copyright>Copyright 2020 (c) Mihai Dumitru. All rights reserved.</Copyright>
 
+		<Description>A carousel implementation for Blazor applications.</Description>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0-rc.1.20451.17" />
-  </ItemGroup>
+		<!-- NuGet settings -->
+		<PackageId>BlazingCarousel</PackageId>
+		<PackageTags>Blazor;Razor;Components;Carousel;Image;Slider;ASP.NET Core;CSharp;Web</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/mihaimyh/BlazingCarousel</PackageProjectUrl>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/mihaimyh/BlazingCarousel</RepositoryUrl>
 
+		<!-- SourceLink settings -->
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<!-- File with mtime of last successful npm install -->
+		<NpmInstallStampFile>node_modules/.install-stamp</NpmInstallStampFile>
+	</PropertyGroup>
+
+	<Target Name="NpmInstall" BeforeTargets="BeforeBuild" Inputs="package.json" Outputs="$(NpmInstallStampFile)">
+		<Exec Command="npm install" />
+		<Touch Files="$(NpmInstallStampFile)" AlwaysCreate="true" />
+	</Target>
+
+	<Target Name="DebugRunWebPack" BeforeTargets="Build" Condition="$(Configuration) == 'Debug'">
+		<Exec Command="npm run-script build:debug" ContinueOnError="false" />
+	</Target>
+
+	<Target Name="ReleaseRunWebPack" BeforeTargets="Build" Condition="$(Configuration) == 'Release'">
+		<Exec Command="npm run-script build:release" ContinueOnError="false" />
+	</Target>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0-rc.1.20451.17" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="wwwroot\" />
+	</ItemGroup>
 </Project>

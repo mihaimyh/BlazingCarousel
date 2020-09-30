@@ -3,6 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Custom rules
+src/BlazingCarousel/wwwroot/*.js
+src/BlazingCarousel/wwwroot/*.map
+
 # User-specific files
 *.rsuser
 *.suo
